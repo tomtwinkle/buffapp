@@ -1,3 +1,6 @@
+import 'package:bloc_provider/bloc_provider.dart';
+import 'package:board_buff_01/page1.dart';
+import 'package:board_buff_01/page1_bloc.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -101,6 +104,19 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            ElevatedButton(
+                onPressed: (){
+              print("hoge");
+              Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => BlocProvider(
+                      creator: (_context, _) => Page1Bloc(),
+                      child: const Page1(),
+                    ),
+                  ),
+              );
+            }, child: const Text("Button")
             ),
           ],
         ),
