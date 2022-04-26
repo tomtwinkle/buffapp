@@ -8,19 +8,20 @@ part 'zenn_topic_article.g.dart';
 
 @freezed
 class ZennTopicArticle with _$ZennTopicArticle {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   factory ZennTopicArticle({
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'post_type') required String postType,
-    @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'slug') required String slug,
-    @JsonKey(name: 'comments_count') required int commentsCount,
-    @JsonKey(name: 'liked_count') required int likedCount,
-    @JsonKey(name: 'body_letters_count') required int bodyLettersCount,
-    @JsonKey(name: 'reading_time') required int readingTime,
-    @JsonKey(name: 'article_type') required String articleType,
-    @JsonKey(name: 'emoji') required String emoji,
-    @JsonKey(name: 'published_at') required String publishedAt,
-    @JsonKey(name: 'user') required ZennTopicArticleUser user,
+    required int id,
+    required String postType,
+    required String title,
+    required String slug,
+    required int commentsCount,
+    required int likedCount,
+    required int bodyLettersCount,
+    required int readingTime,
+    required String articleType,
+    required String emoji,
+    required String publishedAt,
+    required ZennTopicArticleUser user,
   }) = _ZennTopicArticle;
 
   ZennTopicArticle._();
