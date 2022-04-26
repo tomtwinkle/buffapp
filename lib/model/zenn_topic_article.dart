@@ -6,6 +6,7 @@ part 'zenn_topic_article.freezed.dart';
 
 part 'zenn_topic_article.g.dart';
 
+@freezed
 class ZennTopicArticle with _$ZennTopicArticle {
   factory ZennTopicArticle({
     @JsonKey(name: 'id') required int id,

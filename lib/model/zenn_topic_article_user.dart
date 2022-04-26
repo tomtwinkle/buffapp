@@ -5,7 +5,7 @@ part 'zenn_topic_article_user.freezed.dart';
 part 'zenn_topic_article_user.g.dart';
 
 @freezed
-abstract class ZennTopicArticleUser with _$ZennTopicArticleUser {
+class ZennTopicArticleUser with _$ZennTopicArticleUser {
   factory ZennTopicArticleUser({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'username') required String username,

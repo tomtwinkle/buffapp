@@ -5,7 +5,7 @@ part 'address.freezed.dart';
 part 'address.g.dart';
 
 @freezed
-abstract class Address with _$Address {
+class Address with _$Address {
   factory Address({
     @JsonKey(name: 'address1') required String address1,
     @JsonKey(name: 'address2') required String address2,

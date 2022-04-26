@@ -7,7 +7,7 @@ part 'zenn_topic.freezed.dart';
 part 'zenn_topic.g.dart';
 
 @freezed
-abstract class ZennTopic with _$ZennTopic {
+class ZennTopic with _$ZennTopic {
   factory ZennTopic({
     @JsonKey(name: 'articles') required List<ZennTopicArticle> articles,
     @JsonKey(name: 'next_page') required int nextPage,
