@@ -13,7 +13,6 @@ class ZennTopicArticle with _$ZennTopicArticle {
     @JsonKey(name: 'post_type') required String postType,
     @JsonKey(name: 'title') required String title,
     @JsonKey(name: 'slug') required String slug,
-    @JsonKey(name: 'published') required String published,
     @JsonKey(name: 'comments_count') required int commentsCount,
     @JsonKey(name: 'liked_count') required int likedCount,
     @JsonKey(name: 'body_letters_count') required int bodyLettersCount,
