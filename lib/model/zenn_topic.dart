@@ -8,9 +8,10 @@ part 'zenn_topic.g.dart';
 
 @freezed
 class ZennTopic with _$ZennTopic {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   factory ZennTopic({
-    @JsonKey(name: 'articles') required List<ZennTopicArticle> articles,
-    @JsonKey(name: 'next_page') required int nextPage,
+    required List<ZennTopicArticle> articles,
+    required int nextPage,
   }) = _ZennTopic;
 
   ZennTopic._();
