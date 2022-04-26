@@ -1,19 +1,20 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'address.freezed.dart';
+import 'zenn_topic_article.dart';
 
-part 'address.g.dart';
+part 'zenn_topic.freezed.dart';
+
+part 'zenn_topic.g.dart';
 
 @freezed
-abstract class Address with _$Address {
-  factory Address({
-    @JsonKey(name: 'address1') required String address1,
-    @JsonKey(name: 'address2') required String address2,
-    @JsonKey(name: 'address3') required String address3,
-  }) = _Address;
+abstract class ZennTopic with _$ZennTopic {
+  factory ZennTopic({
+    @JsonKey(name: 'articles') required List<ZennTopicArticle> articles,
+    @JsonKey(name: 'next_page') required int nextPage,
+  }) = _ZennTopic;
 
-  Address._();
+  ZennTopic._();
 
-  factory Address.fromJson(Map<String, dynamic> json) =>
-      _$AddressFromJson(json);
+  factory ZennTopic.fromJson(Map<String, dynamic> json) =>
+      _$ZennTopicFromJson(json);
 }

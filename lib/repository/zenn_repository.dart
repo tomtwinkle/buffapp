@@ -1,26 +1,26 @@
 import 'dart:async';
 import 'dart:convert';
 
-import '../client/zipcode_api.dart';
+import '../client/zenn_api.dart';
 import '../model/address.dart';
 
-abstract class ZipRepositoryInterface {
-  Future<Address> getAddressFromZipCode(String zipCode);
+abstract class ZennRepositoryInterface {
+  Future<Address> listTopics(String topicName);
 }
 
-class ZipRepository implements ZipRepositoryInterface {
-  final ZipCodeAPIClient _client;
+class ZennRepository implements ZennRepositoryInterface {
+  final ZennAPIClient _client;
 
-  ZipRepository({
-    required ZipCodeAPIClient client,
+  ZennRepository({
+    required ZennAPIClient client,
   }) : _client = client;
 
   @override
-  Future<Address> getAddressFromZipCode(String zipCode) async {
+  Future<Address> listTopics(String topicName) async {
     try {
-      final response = await _client.getAddressFromZipCode(zipCode);
+      final response = await _client.list(topicName);
       final jsonResponse = json.decode(response.body);
-      final jsonData = jsonResponse['results'][0] as Map<String, dynamic>;
+      final jsonData = jsonResponse['articles'] as Map<String, dynamic>;
       return Address.fromJson(jsonData);
     } catch (e) {
       rethrow;
