@@ -1,6 +1,8 @@
 import 'package:bloc_provider/bloc_provider.dart';
 import 'package:board_buff_01/page1.dart';
 import 'package:board_buff_01/page1_bloc.dart';
+import 'package:board_buff_01/page2.dart';
+import 'package:board_buff_01/page2_bloc.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -106,18 +108,31 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             ElevatedButton(
-                onPressed: (){
-              print("hoge");
-              Navigator.of(context).push(
+              onPressed: () {
+                Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => BlocProvider(
                       creator: (_context, _) => Page1Bloc(),
                       child: const Page1(),
                     ),
                   ),
-              );
-            }, child: const Text("Button")
+                );
+              },
+              child: const Text("Bloc試すやつ"),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => BlocProvider(
+                      creator: (_context, _) => Page2Bloc(),
+                      child: const Page2(),
+                    ),
+                  ),
+                );
+              },
+              child: const Text("住所を取るやつ"),
+            )
           ],
         ),
       ),
