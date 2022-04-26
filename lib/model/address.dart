@@ -6,10 +6,11 @@ part 'address.g.dart';
 
 @freezed
 class Address with _$Address {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   factory Address({
-    @JsonKey(name: 'address1') required String address1,
-    @JsonKey(name: 'address2') required String address2,
-    @JsonKey(name: 'address3') required String address3,
+    required String address1,
+    required String address2,
+    required String address3,
   }) = _Address;
 
   Address._();

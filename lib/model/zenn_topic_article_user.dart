@@ -6,11 +6,12 @@ part 'zenn_topic_article_user.g.dart';
 
 @freezed
 class ZennTopicArticleUser with _$ZennTopicArticleUser {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   factory ZennTopicArticleUser({
-    @JsonKey(name: 'id') required int id,
-    @JsonKey(name: 'username') required String username,
-    @JsonKey(name: 'name') required String name,
-    @JsonKey(name: 'avatar_small_url') required String avatarSmallUrl,
+    required int id,
+    required String username,
+    required String name,
+    required String avatarSmallUrl,
   }) = _ZennTopicArticleUser;
 
   ZennTopicArticleUser._();
