@@ -1,11 +1,11 @@
 import 'package:bloc_provider/bloc_provider.dart';
+import 'package:board_buff_01/client/zipcode_api.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'client/api_client.dart';
 import 'repository/zip_repository.dart';
 
 class Page2Bloc extends Bloc {
-  final _zipRepository = ZipRepository(client: ApiClient());
+  final _zipRepository = ZipRepository(client: ZipCodeAPI());
 
   // 住所
   final _address = BehaviorSubject<String>.seeded('');
