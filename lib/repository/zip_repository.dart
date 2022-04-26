@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import '../client/api_client.dart';
+import '../client/zipcode_api.dart';
 import '../model/address.dart';
 
 abstract class ZipRepositoryInterface {
@@ -9,10 +9,10 @@ abstract class ZipRepositoryInterface {
 }
 
 class ZipRepository implements ZipRepositoryInterface {
-  final Client _client;
+  final ZipCodeAPIClient _client;
 
   ZipRepository({
-    required Client client,
+    required ZipCodeAPIClient client,
   }) : _client = client;
 
   @override

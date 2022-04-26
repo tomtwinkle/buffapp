@@ -1,23 +1,9 @@
 import 'package:http/http.dart' as http;
 
-abstract class Client {
-  Future<http.Response> getAddressFromZipCode(String zipCode);
-}
-
-class ApiClient implements Client {
+class ApiClient {
   final _timeout = const Duration(seconds: 30);
 
-  @override
-  Future<http.Response> getAddressFromZipCode(String zipCode) async {
-    const baseUrl = 'https://zipcloud.ibsnet.co.jp/api/search';
-    final params = <String, String>{
-      'zipcode': zipCode.toString(),
-      'limit': '1'
-    };
-    return await _get(baseUrl, params, false);
-  }
-
-  Future<http.Response> _get(
+  Future<http.Response> get(
     String url,
     Map<String, String?> params,
     bool withToken, {
@@ -28,7 +14,7 @@ class ApiClient implements Client {
       final client = http.Client();
       var requestUrl = url;
       if (params.keys.isNotEmpty) {
-        requestUrl = _addParamToUrl(url, params, allowEmpty: allowEmpty);
+        requestUrl = addParamToUrl(url, params, allowEmpty: allowEmpty);
         if (listParam != null) {
           requestUrl = _addListParamToUrl(
             requestUrl,
@@ -53,12 +39,12 @@ class ApiClient implements Client {
     }
   }
 
-  Future<http.Response> _post(String url, body, bool withToken) async {
+  Future<http.Response> post(String url, body, bool withToken) async {
     try {
       final client = http.Client();
       final requestUrl = Uri.parse(url);
       print('request url: $requestUrl');
-      final headers = await _getHeaders();
+      final headers = await getHeaders();
       final response = await client
           .post(
             requestUrl,
@@ -77,12 +63,12 @@ class ApiClient implements Client {
     }
   }
 
-  Future<http.Response> _put(String url, body, bool withToken) async {
+  Future<http.Response> put(String url, body, bool withToken) async {
     try {
       final client = http.Client();
       final requestUrl = Uri.parse(url);
       print('request url: $requestUrl');
-      final headers = await _getHeaders();
+      final headers = await getHeaders();
       final response = await client
           .put(
             requestUrl,
@@ -101,7 +87,7 @@ class ApiClient implements Client {
     }
   }
 
-  Future<http.Response> _delete(
+  Future<http.Response> delete(
     String url,
     Map<String, String?> params,
     bool withToken, {
@@ -112,7 +98,7 @@ class ApiClient implements Client {
       var requestUrl = url;
       print('request url: $requestUrl');
       if (params.keys.isNotEmpty) {
-        requestUrl = _addParamToUrl(url, params);
+        requestUrl = addParamToUrl(url, params);
         if (listParam != null) {
           requestUrl = _addListParamToUrl(
             requestUrl,
@@ -136,7 +122,7 @@ class ApiClient implements Client {
     }
   }
 
-  Future<Map<String, String>> _getHeaders() async {
+  Future<Map<String, String>> getHeaders() async {
     final headers = {
       'Content-type': 'application/json',
     };
@@ -156,7 +142,7 @@ class ApiClient implements Client {
     return result;
   }
 
-  static String _addParamToUrl(String base, Map<String, String?> params,
+  static String addParamToUrl(String base, Map<String, String?> params,
       {bool allowEmpty = false}) {
     var result = base;
     result += '?';
