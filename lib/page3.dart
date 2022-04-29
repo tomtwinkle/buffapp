@@ -37,34 +37,35 @@ class _Page3State extends State<Page3> {
         appBar: AppBar(
           title: const Text('ZennTopic検索'),
         ),
-        body: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Topic:'),
-                SizedBox(
-                  width: 150,
-                  child: TextFormField(
-                    keyboardType: TextInputType.number,
-                    onChanged: bloc.topicInputAction.add,
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Topic:'),
+                  SizedBox(
+                    width: 150,
+                    child: TextFormField(
+                      keyboardType: TextInputType.number,
+                      onChanged: bloc.topicInputAction.add,
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    bloc.getTopic();
-                  },
-                  child: const Text('検索'),
-                ),
-              ],
-            ),
-            Container(
-              height: 350,
-              padding: const EdgeInsets.all(6),
-              // 配列を元にリスト表示
-              child: topics,
-            ),
-          ],
+                  ElevatedButton(
+                    onPressed: () {
+                      bloc.getTopic();
+                    },
+                    child: const Text('検索'),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 400,
+                // 配列を元にリスト表示
+                child: topics,
+              ),
+            ],
+          ),
         ),
       ),
     );
