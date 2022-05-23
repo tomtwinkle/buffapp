@@ -11,7 +11,7 @@ class ZennTopic with _$ZennTopic {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory ZennTopic({
     required List<ZennTopicArticle> articles,
-    required int nextPage,
+    int? nextPage,
   }) = _ZennTopic;
 
   ZennTopic._();

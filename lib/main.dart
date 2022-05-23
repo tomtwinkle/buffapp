@@ -1,9 +1,12 @@
 import 'package:bloc_provider/bloc_provider.dart';
-import 'package:board_buff_01/page1.dart';
-import 'package:board_buff_01/page1_bloc.dart';
-import 'package:board_buff_01/page2.dart';
-import 'package:board_buff_01/page2_bloc.dart';
 import 'package:flutter/material.dart';
+
+import 'page1.dart';
+import 'page1_bloc.dart';
+import 'page2.dart';
+import 'page2_bloc.dart';
+import 'page3.dart';
+import 'page3_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -132,6 +135,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: const Text("住所を取るやつ"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => BlocProvider(
+                      creator: (_context, _) => Page3Bloc(),
+                      child: const Page3(),
+                    ),
+                  ),
+                );
+              },
+              child: const Text("ZennTopicを取るやつ"),
             )
           ],
         ),
